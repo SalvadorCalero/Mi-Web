@@ -29,3 +29,15 @@ Route::get('/sobre-mi', [PageController::class, 'about'])->name('about');
 Route::get('/contacto', [ContactController::class, 'index'])->name('contact.index');
 // Procesa los datos al pulsar enviar (POST)
 Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send');
+
+// El siguiente código es temporal
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/ejecutar-migracion-secreta', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return '¡Migraciones ejecutadas con éxito!: <br><pre>' . Artisan::output() . '</pre>';
+    } catch (\Exception $e) {
+        return 'Error al migrar: ' . $e->getMessage();
+    }
+});
