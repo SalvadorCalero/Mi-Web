@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    /* 1. Definición de tu paleta de colores personalizada */
+    /* opción 1 */
+    --color-fondoGeneral: #FDFBF7;
+    --color-textoPrincipal: #18181B;
+    --color-textoCuerpo: #52525B;
+    --color-botonEnlace: #C2410C;
+
+    /* opción 2 */
+    /* --color-fondoGeneral: #FAF8F5;
+    --color-textoPrincipal: #064E3B;
+    --color-textoCuerpo: #2F4F4F;
+    --color-botonEnlace: #10B981; */
+
+    /* opción 3 */
+    /* --color-fondoGeneral: #F1F5F9;
+    --color-textoPrincipal: #1E1B4B;
+    --color-textoCuerpo: #475569;
+    --color-botonEnlace: #6366F1; */
+
+    /* 2. Configuración de tus familias de fuentes */
+    --font-fuentePrincipal: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-titulos: 'Plus Jakarta Sans', 'Geist Sans', ui-sans-serif, system-ui, sans-serif;
+}
