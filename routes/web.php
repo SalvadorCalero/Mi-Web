@@ -30,3 +30,9 @@ Route::get('/contacto', [ContactController::class, 'index'])->name('contact.inde
 // Procesa los datos al pulsar enviar (POST)
 Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send');
 
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/ejecutar-seeder-secreto', function () {
+    Artisan::call('db:seed'); // O 'db:seed --class=ProjectSeeder' si tienes uno específico
+    return '¡Base de datos rellenada con éxito!';
+});
