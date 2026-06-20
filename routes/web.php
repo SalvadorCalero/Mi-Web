@@ -33,6 +33,7 @@ Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/ejecutar-seeder-secreto', function () {
-    Artisan::call('db:seed'); // O 'db:seed --class=ProjectSeeder' si tienes uno específico
-    return '¡Base de datos rellenada con éxito!';
+    // Forzamos a Laravel a ejecutar la clase exacta de tu Seeder de proyectos
+    Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']); 
+    return '¡Seeder específico ejecutado con éxito!';
 });
