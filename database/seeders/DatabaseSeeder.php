@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1. Limpieza radical de la tabla para evitar duplicados en local
-        Project::truncate();
+        Project::query()->delete();
 
         // 2. Mapeo completo de tu árbol de directorios real (Imágenes WebP)
         // Asegúrate de cambiar el array $proyectos en tu DatabaseSeeder.php por este:
@@ -92,7 +92,7 @@ $proyectos = [
 
         // 3. Inserción automatizada en la base de datos
         foreach ($proyectos as $proyecto) {
-            Project::create($proyecto);
+            Project::forceCreate($proyecto);
         }
     }
 }
