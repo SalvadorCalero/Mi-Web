@@ -90,9 +90,16 @@ $proyectos = [
     ],
 ];
 
-        // 3. Inserción automatizada en la base de datos
+        // 3. Inserción directa saltando modelos y cachés
         foreach ($proyectos as $proyecto) {
-            Project::forceCreate($proyecto);
+            \Illuminate\Support\Facades\DB::table('projects')->insert([
+                'title'           => $proyecto['title'],
+                'description'     => $proyecto['description'],
+                'image_path'      => $proyecto['image_path'],
+                'page_image_path' => $proyecto['page_image_path'],
+                'url'             => $proyecto['url'],
+                'created_at'      => now(),
+                'updated_at'      => now(),
+            ]);
         }
-    }
 }

@@ -30,10 +30,17 @@ Route::get('/contacto', [ContactController::class, 'index'])->name('contact.inde
 // Procesa los datos al pulsar enviar (POST)
 Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send');
 
+
+// las siguientes líneas son temporales, hay que eliminarlas despues de reparar la subida de seeders
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/ejecutar-seeder-secreto', function () {
-    // Forzamos a Laravel a ejecutar la clase exacta de tu Seeder de proyectos
+    // Forzamos la limpieza absoluta de la caché del framework y de los modelos
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    
+    // Ejecutamos el seeder principal
     Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']); 
-    return '¡Seeder específico ejecutado con éxito!';
+    
+    return '¡Caché limpiada y Seeder ejecutado con éxito total!';
 });
