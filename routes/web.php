@@ -31,16 +31,3 @@ Route::get('/contacto', [ContactController::class, 'index'])->name('contact.inde
 Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send');
 
 
-// las siguientes líneas son temporales, hay que eliminarlas despues de reparar la subida de seeders
-use Illuminate\Support\Facades\Artisan;
-
-Route::get('/ejecutar-seeder-secreto', function () {
-    // Forzamos la limpieza absoluta de la caché del framework y de los modelos
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    
-    // Ejecutamos el seeder principal
-    Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']); 
-    
-    return '¡Caché limpiada y Seeder ejecutado con éxito total!';
-});
