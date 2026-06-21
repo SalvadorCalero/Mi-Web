@@ -202,6 +202,70 @@
         </div>
 
     </footer>
+    
+<!-- ==========================================
+         BLOQUE GLOBAL: COOKIES & BOTÓN FLOTANTE
+         ========================================== -->
+    <div x-data="cookieBanner">
+        
+        <!-- Banner de Cookies -->
+        <div 
+            x-show="mostrarBanner"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 translate-y-4"
+            class="fixed bottom-4 left-4 right-4 sm:left-auto max-w-md w-[calc(100%-2rem)] sm:w-full bg-white border border-stone-200 rounded-xl shadow-xl p-6 z-50"
+            x-cloak
+        >
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-xl">🍪</span>
+                    <h3 class="text-sm font-titulos font-semibold tracking-wider uppercase text-stone-800">Aviso de Cookies</h3>
+                </div>
+                
+                <p class="text-xs text-stone-600 leading-relaxed">
+                    Utilizamos cookies propias y de terceros para analizar nuestros servicios y mostrarte publicidad relacionada con tus preferencias. Puedes aceptarlas o rechazarlas.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-2 mt-2">
+                    <button 
+                        @click="acceptCookies()" 
+                        class="flex-1 bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer"
+                    >
+                        Aceptar todas
+                    </button>
+                    <button 
+                        @click="rejectCookies()" 
+                        class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer"
+                    >
+                        Rechazar todas
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón Flotante para Reabrir el Configurar -->
+        <button 
+            x-show="!mostrarBanner"
+            @click="mostrarBanner = true"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-75"
+            x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-75"
+            class="fixed bottom-4 right-4 md:right-6 z-40 bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer flex items-center justify-center text-xl select-none group"
+            aria-label="Configuración de cookies"
+            title="Configuración de cookies"
+            x-cloak
+        >
+            <span class="group-hover:rotate-12 transition-transform duration-200">🍪</span>
+        </button>
+
+    </div>
 
 </body>
 </html>
