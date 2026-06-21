@@ -21,8 +21,6 @@
             </p>
         </div>
 
-        <!-- Pestañas -->
-
         <div class="border-b border-stone-200 mb-10">
             <nav class="flex space-x-6 -mb-px" aria-label="Tabs de proyectos">
                 <button @click="activeTab = 'formacion'"
@@ -51,46 +49,120 @@
             </nav>
         </div>
 
-        <!-- Contenido de la pestaña Formación -->
-
         <div x-show="activeTab === 'formacion'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    @forelse($formacionProjects as $project)
-        @empty
-        <div class="col-span-full py-12 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
-            <p class="font-fuentePrincipal text-textoCuerpo text-sm">No hay proyectos de formación.</p>
+            @forelse($formacionProjects as $project)
+                <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+                    
+                    <div class="aspect-video bg-stone-100 relative cursor-pointer overflow-hidden group"
+                         @click="modalOpen = true; modalImage = '{{ asset($project->page_image_path) }}'; modalTitle = '{{ $project->title }}'">
+                        
+                        @if($project->image_path)
+                            <img src="{{ asset($project->image_path) }}" 
+                                 alt="Previsualización de {{ $project->title }}" 
+                                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                        @else
+                            <div class="w-full h-full bg-stone-100 flex items-center justify-center text-stone-400 text-xs">Sin imagen</div>
+                        @endif
+                        
+                        <div class="absolute inset-0 bg-stone-950/0 group-hover:bg-stone-950/20 transition-colors flex items-center justify-center">
+                            <span class="bg-stone-900/80 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 backdrop-blur-xs">
+                                Ampliar Vista 🔍
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2 class="font-titulos font-bold text-xl text-textoPrincipal mb-2">
+                            {{ $project->title }}
+                        </h2>
+                        <p class="font-fuentePrincipal text-textoCuerpo text-sm leading-relaxed flex-grow">
+                            {{ $project->description }}
+                        </p>
+                        
+                        @if($project->url)
+                            <div class="mt-6 pt-4 border-t border-stone-100">
+                                <a href="{{ $project->url }}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="w-full bg-stone-900 hover:bg-stone-800 text-white font-fuentePrincipal font-medium text-xs py-2.5 px-4 rounded-xl inline-flex items-center justify-center gap-2 transition-colors shadow-xs">
+                                    Visitar sitio web activo
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </article>
+            @empty
+                <div class="col-span-full py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
+                    <p class="font-fuentePrincipal text-textoCuerpo text-sm">No hay proyectos de formación.</p>
+                </div>
+            @endforelse
         </div>
-    @endforelse
-</div>
-
-        <!-- Contenido de la pestaña Personales -->
 
         <div x-show="activeTab === 'personales'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-cloak>
-    @forelse($personalesProjects as $project)
-        <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm flex flex-col h-full">
-            </article>
-    @empty
-        <div class="col-span-full py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
-            <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+            @forelse($personalesProjects as $project)
+                <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2 class="font-titulos font-bold text-xl text-textoPrincipal mb-2">{{ $project->title }}</h2>
+                        <p class="font-fuentePrincipal text-textoCuerpo text-sm leading-relaxed flex-grow">{{ $project->description }}</p>
+                    </div>
+                </article>
+            @empty
+                <div class="col-span-full py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
+                    <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+                </div>
+            @endforelse
         </div>
-    @endforelse
-</div>
 
-        <!-- Contenido de la pestaña Otros -->
-
-<div x-show="activeTab === 'otros'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-cloak>
-    @forelse($otrosProjects as $project)
-        <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm flex flex-col h-full">
-            <div class="p-6 flex flex-col flex-grow">
-                <h2 class="font-titulos font-bold text-xl text-textoPrincipal mb-2">{{ $project->title }}</h2>
-                <p class="font-fuentePrincipal text-textoCuerpo text-sm leading-relaxed flex-grow">{{ $project->description }}</p>
-            </div>
-        </article>
-    @empty
-        <div class="col-span-full py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
-            <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+        <div x-show="activeTab === 'otros'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-cloak>
+            @forelse($otrosProjects as $project)
+                <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+                    
+                    <div class="aspect-video bg-stone-100 relative cursor-pointer overflow-hidden group"
+                         @click="modalOpen = true; modalImage = '{{ asset($project->page_image_path) }}'; modalTitle = '{{ $project->title }}'">
+                        
+                        @if($project->image_path)
+                            <img src="{{ asset($project->image_path) }}" 
+                                 alt="Previsualización de {{ $project->title }}" 
+                                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+                        @else
+                            <div class="w-full h-full bg-stone-100 flex items-center justify-center text-stone-400 text-xs">Sin imagen</div>
+                        @endif
+                        
+                        <div class="absolute inset-0 bg-stone-950/0 group-hover:bg-stone-950/20 transition-colors flex items-center justify-center">
+                            <span class="bg-stone-900/80 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 backdrop-blur-xs">
+                                Ampliar Vista 🔍
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h2 class="font-titulos font-bold text-xl text-textoPrincipal mb-2">
+                            {{ $project->title }}
+                        </h2>
+                        <p class="font-fuentePrincipal text-textoCuerpo text-sm leading-relaxed flex-grow">
+                            {{ $project->description }}
+                        </p>
+                        
+                        @if($project->url)
+                            <div class="mt-6 pt-4 border-t border-stone-100">
+                                <a href="{{ $project->url }}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer" 
+                                   class="w-full bg-stone-900 hover:bg-stone-800 text-white font-fuentePrincipal font-medium text-xs py-2.5 px-4 rounded-xl inline-flex items-center justify-center gap-2 transition-colors shadow-xs">
+                                    Visitar sitio web activo
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                </article>
+            @empty
+                <div class="col-span-full py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200">
+                    <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+                </div>
+            @endforelse
         </div>
-    @endforelse
-</div>
 
         <div x-show="modalOpen" 
              class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md"
