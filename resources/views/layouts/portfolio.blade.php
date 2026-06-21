@@ -8,10 +8,11 @@
              x-data="{ 
                 modalOpen: false, 
                 modalImage: '', 
-                modalTitle: '' 
+                modalTitle: '',
+                activeTab: 'formacion' {{-- Controla la pestaña activa por defecto --}}
              }">
              
-        <div class="max-w-3xl mb-12">
+        <div class="max-w-3xl mb-8">
             <h1 class="font-titulos font-bold text-3xl md:text-4xl text-textoPrincipal tracking-tight">
                 Historial de Proyectos
             </h1>
@@ -20,7 +21,40 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="border-b border-stone-200 mb-10">
+            <nav class="flex space-x-6 -mb-px" aria-label="Tabs de proyectos">
+                <button @click="activeTab = 'formacion'"
+                        :class="activeTab === 'formacion' 
+                            ? 'border-stone-900 text-textoPrincipal font-semibold' 
+                            : 'border-transparent text-stone-400 hover:text-textoCuerpo hover:border-stone-200'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-fuentePrincipal text-sm transition-all cursor-pointer">
+                    Formación
+                </button>
+
+                <button @click="activeTab = 'personales'"
+                        :class="activeTab === 'personales' 
+                            ? 'border-stone-900 text-textoPrincipal font-semibold' 
+                            : 'border-transparent text-stone-400 hover:text-textoCuerpo hover:border-stone-200'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-fuentePrincipal text-sm transition-all cursor-pointer">
+                    Proyectos Personales
+                </button>
+
+                <button @click="activeTab = 'otros'"
+                        :class="activeTab === 'otros' 
+                            ? 'border-stone-900 text-textoPrincipal font-semibold' 
+                            : 'border-transparent text-stone-400 hover:text-textoCuerpo hover:border-stone-200'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-fuentePrincipal text-sm transition-all cursor-pointer">
+                    Más Proyectos
+                </button>
+            </nav>
+        </div>
+
+        <div x-show="activeTab === 'formacion'" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
             @forelse($projects as $project)
                 <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                     
@@ -50,7 +84,6 @@
                             {{ $project->description }}
                         </p>
                         
-                        {{-- El enlace transformado en un botón de diseño corporativo moderno --}}
                         @if($project->url)
                             <div class="mt-6 pt-4 border-t border-stone-100">
                                 <a href="{{ $project->url }}" 
@@ -71,6 +104,36 @@
                     </p>
                 </div>
             @endforelse
+        </div>
+
+        <div x-show="activeTab === 'personales'" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             class="py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200"
+             x-cloak>
+            <div class="max-w-md mx-auto space-y-2">
+                <span class="text-2xl">⏳</span>
+                <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+                <p class="font-fuentePrincipal text-stone-400 text-xs leading-relaxed">
+                    Módulos y herramientas independientes actualmente en refactorización arquitectónica.
+                </p>
+            </div>
+        </div>
+
+        <div x-show="activeTab === 'otros'" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 transform translate-y-2"
+             x-transition:enter-end="opacity-100 transform translate-y-0"
+             class="py-12 px-4 text-center bg-stone-50/50 rounded-xl border border-dashed border-stone-200"
+             x-cloak>
+            <div class="max-w-md mx-auto space-y-2">
+                <span class="text-2xl">🚀</span>
+                <p class="font-titulos font-semibold text-textoPrincipal text-base">Actualización Próximamente</p>
+                <p class="font-fuentePrincipal text-stone-400 text-xs leading-relaxed">
+                    Integraciones con APIs de terceros y auditorías externas listas para su documentación pública.
+                </p>
+            </div>
         </div>
 
         <div x-show="modalOpen" 
