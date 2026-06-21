@@ -21,6 +21,8 @@
             </p>
         </div>
 
+        <!-- Pestañas -->
+
         <div class="border-b border-stone-200 mb-10">
             <nav class="flex space-x-6 -mb-px" aria-label="Tabs de proyectos">
                 <button @click="activeTab = 'formacion'"
@@ -48,6 +50,8 @@
                 </button>
             </nav>
         </div>
+
+        <!-- Contenido de la pestaña Formación -->
 
         <div x-show="activeTab === 'formacion'" 
              x-transition:enter="transition ease-out duration-200"
@@ -106,6 +110,8 @@
             @endforelse
         </div>
 
+        <!-- Contenido de la pestaña Personales -->
+
         <div x-show="activeTab === 'personales'" 
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 transform translate-y-2"
@@ -120,6 +126,8 @@
                 </p>
             </div>
         </div>
+
+        <!-- Contenido de la pestaña Otros -->
 
         <div x-show="activeTab === 'otros'" 
              x-transition:enter="transition ease-out duration-200"
