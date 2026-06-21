@@ -22,10 +22,11 @@
 <header class="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 sm:px-6" x-data="{ mobileMenuOpen: false }">
         <div class="bg-white/90 backdrop-blur-md border border-stone-200/60 rounded-xl shadow-sm p-4">
             <div class="flex items-center justify-between">
-                
-                <div class="flex-shrink-0 w-32 h-8 bg-stone-100 border border-dashed border-stone-300 rounded flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
-                    [ LOGO HUECO ]
-                </div>
+                <a href="{{ url('/') }}" class="flex-shrink-0 w-32 h-8 flex items-center justify-center">
+                    <div class="flex-shrink-0 w-32 h-8 flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
+                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain"> 
+                    </div>
+                </a>
 
                 <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
                     <a href="{{ route('home') }}" 
@@ -124,9 +125,11 @@
         <div class="max-w-5xl mx-auto px-6 sm:px-8 md:px-12 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
             
             <div class="flex flex-col items-center sm:items-start space-y-4">
-                <div class="w-32 h-8 bg-stone-100 border border-dashed border-stone-300 rounded flex items-center justify-center text-xs tracking-wider text-stone-400 uppercase">
-                    [ LOGO HUECO ]
-                </div>
+                <a href="{{ url('/') }}" class="flex-shrink-0 w-32 h-8 flex items-center justify-center">
+                    <div class="flex-shrink-0 w-32 h-8 flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
+                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain"> 
+                    </div>
+                </a>
                 <p class="text-xs text-stone-400 leading-relaxed max-w-xs">
                     Desarrollo web a medida bajo arquitecturas estables y escalables.
                 </p>
