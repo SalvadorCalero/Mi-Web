@@ -10,16 +10,21 @@ use App\Models\Project;
 class PageController extends Controller
 {
     /**
-     * Muestra la página del Portfolio con todos los proyectos.
+     * Muestra la página del Portfolio con los proyectos clasificados por pestañas.
      */
     public function portfolio()
     {
-        // Recuperamos absolutamente todos los proyectos almacenados en la tabla 'projects'
-        // utilizando el método de Eloquent ORM 'all()'
-        $projects = Project::all();
+        // 1. Recuperamos absolutamente todos los proyectos de la tabla utilizando Eloquent ORM
+        $allProjects = Project::all();
 
-        // Retornamos la vista 'portfolio' (Fase 3) pasando la colección de proyectos
-        return view('/layouts/portfolio', compact('projects'));
+        // 2. Clasificamos los proyectos filtrando en memoria por la columna 'categoria'
+        // El método where() de las colecciones de Laravel es idóneo y muy rápido para esto
+        $formacionProjects = $allProjects->where('categoria', 'formacion');
+        $personalesProjects = $allProjects->where('categoria', 'personales');
+        $otrosProjects = $allProjects->where('categoria', 'otros');
+
+        // 3. Retornamos la vista pasando las tres variables independientes mediante compact()
+        return view('/layouts/portfolio', compact('formacionProjects', 'personalesProjects', 'otrosProjects'));
     }
 
     /**
