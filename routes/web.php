@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LegalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,10 @@ Route::get('/contacto', [ContactController::class, 'index'])->name('contact.inde
 // Procesa los datos al pulsar enviar (POST)
 Route::post('/contacto', [ContactController::class, 'send'])->name('contact.send');
 
-
+// Rutas para las páginas legales
+Route::controller(LegalController::class)->group(function () {
+    Route::get('/aviso-legal', 'avisoLegal')->name('legal.aviso-legal');
+    Route::get('/politica-privacidad', 'privacidad')->name('legal.politica-privacidad');
+    Route::get('/politica-cookies', 'cookies')->name('legal.cookies');
+    Route::get('/declaracion-accesibilidad', 'accesibilidad')->name('legal.declaracion-accesibilidad');
+});

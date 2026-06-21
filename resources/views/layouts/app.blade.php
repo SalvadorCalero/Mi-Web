@@ -168,10 +168,10 @@
             <div>
                 <h3 class="font-titulos font-semibold text-textoPrincipal text-xs uppercase tracking-wider mb-4">Legal</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="text-textoCuerpo hover:text-botonEnlace transition-colors">Aviso Legal</a></li>
-                    <li><a href="#" class="text-textoCuerpo hover:text-botonEnlace transition-colors">Política de Cookies</a></li>
-                    <li><a href="#" class="text-textoCuerpo hover:text-botonEnlace transition-colors">Política de Privacidad</a></li>
-                    <li><a href="#" class="text-textoCuerpo hover:text-botonEnlace transition-colors">Declaración de Accesibilidad</a></li>
+                    <li><a href="{{ route('legal.aviso-legal') }}" class="{{ request()->routeIs('legal.aviso-legal') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">Aviso Legal</a></li>
+                    <li><a href="{{ route('legal.cookies') }}" class="{{ request()->routeIs('legal.politica-cookies') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">Política de Cookies</a></li>
+                    <li><a href="{{ route('legal.politica-privacidad') }}" class="{{ request()->routeIs('legal.politica-privacidad') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">Política de Privacidad</a></li>
+                    <li><a href="{{ route('legal.declaracion-accesibilidad') }}" class="{{ request()->routeIs('legal.declaracion-accesibilidad') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">Declaración de Accesibilidad</a></li>
                 </ul>
             </div>
 
