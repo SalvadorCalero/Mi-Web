@@ -14,11 +14,15 @@
              
         <div class="max-w-3xl mb-8">
             <h1 class="font-titulos font-bold text-3xl md:text-4xl text-textoPrincipal tracking-tight">
-                Historial de Proyectos
+                Proyectos web desarrollados para empresas y profesionales
             </h1>
             <p class="font-fuentePrincipal text-textoCuerpo text-base md:text-lg mt-3 leading-relaxed">
-                Galería completa de las aplicaciones y desarrollos web en los que he participado. Cada tarjeta representa una arquitectura desplegada y testeada.
+                Cada proyecto es diferente porque cada negocio tiene necesidades distintas. Aquí puedes ver algunos de los sitios web en los que he participado, diseñados para mejorar la presencia online, transmitir confianza y facilitar el contacto con clientes.
             </p>
+            <p class="font-fuentePrincipal text-textoCuerpo text-base md:text-lg mt-3 leading-relaxed">
+                Mi objetivo en cada proyecto es crear sitios web claros, rápidos y adaptados a cualquier dispositivo, ayudando a empresas y profesionales a mostrar sus servicios de forma profesional.
+            </p>
+            
         </div>
 
         <div class="border-b border-stone-200 mb-10">
@@ -28,7 +32,7 @@
                             ? 'border-stone-900 text-textoPrincipal font-semibold' 
                             : 'border-transparent text-stone-400 hover:text-textoCuerpo hover:border-stone-200'"
                         class="whitespace-nowrap py-4 px-1 border-b-2 font-fuentePrincipal text-sm transition-all cursor-pointer">
-                    Formación
+                    Clientes
                 </button>
 
                 <button @click="activeTab = 'personales'"

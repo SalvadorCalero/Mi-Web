@@ -9,23 +9,23 @@
     <section class="flex flex-col items-center justify-center text-center py-16 md:py-20 px-4 bg-fondoGeneral rounded-xl border border-stone-300/40 mt-6">
         
         <span class="text-botonEnlace font-titulos font-semibold tracking-wider text-sm uppercase mb-3 block">
-            Desarrollo de Aplicaciones Web & Backend Replicable
+            DISEÑO Y DESARROLLO WEB PARA EMPRESAS Y PROFESIONALES
         </span>
         
         <h1 class="font-titulos font-bold text-3xl md:text-5xl text-textoPrincipal max-w-4xl leading-tight md:leading-tight">
-            Código limpio, infraestructuras aisladas y diseño con enfoque humano.
+            Tu empresa merece una web profesional que inspire confianza y atraiga clientes
         </h1>
         
         <p class="font-fuentePrincipal text-textoCuerpo text-base md:text-lg max-w-2xl mt-6 leading-relaxed">
-            Especializado en la creación de herramientas digitales robustas utilizando el ecosistema PHP y Laravel bajo entornos profesionales Docker. Diseño optimizado para velocidades de carga instantáneas.
+            Desarrollo páginas web modernas, rápidas y adaptadas a cualquier dispositivo. Mi objetivo es ayudarte a mostrar tu negocio de forma profesional, mejorar tu presencia online y facilitar que nuevos clientes contacten contigo.
         </p>
         
         <div class="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a href="{{ route('contact.index') }}" class="inline-block bg-botonEnlace hover:bg-orange-800 text-white font-fuentePrincipal font-medium px-8 py-3.5 rounded-lg shadow-md shadow-orange-700/10 transition-colors text-center">
-                Iniciar Proyecto
+                Solicitar Presupuesto
             </a>
             <a href="{{ route('portfolio') }}" class="inline-block bg-white hover:bg-stone-50 text-textoPrincipal border border-stone-200 font-fuentePrincipal font-medium px-8 py-3.5 rounded-lg transition-colors text-center">
-                Explorar Proyectos
+                Ver Trabajos
             </a>
         </div>
     </section>
@@ -93,7 +93,7 @@
     
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 px-2">
         <div>
-            <span class="text-botonEnlace font-titulos font-semibold tracking-wider text-xs uppercase mb-1 block">Experiencia en Producción</span>
+            <span class="text-botonEnlace font-titulos font-semibold tracking-wider text-xs uppercase mb-1 block">ALGUNOS DE MIS TRABAJOS</span>
             <h2 class="font-titulos font-bold text-2xl md:text-3xl text-textoPrincipal">Proyectos Recientes</h2>
         </div>
         

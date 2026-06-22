@@ -131,7 +131,7 @@
                     </div>
                 </a>
                 <p class="text-xs text-stone-400 leading-relaxed max-w-xs">
-                    Desarrollo web a medida bajo arquitecturas estables y escalables.
+                    Diseño y desarrollo páginas web profesionales para empresas, autónomos y asociaciones.
                 </p>
             </div>
 
@@ -178,13 +178,21 @@
             <div class="flex flex-col items-center sm:items-start">
                 <h3 class="font-titulos font-semibold text-textoPrincipal text-xs uppercase tracking-wider mb-4">Contacto</h3>
                 <ul class="space-y-2 text-stone-500 mb-4 w-full">
-                    <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📧</span> info@tu-dominio.com</li>
-                    <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📞</span> +34 600 000 000</li>
+                    <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📧</span>
+                    <a href="mailto:salkalero@gmail.com" class = "hover:text-botonEnlace transitions-colors">
+                        salkalero@gmail.com
+                    </a>
+                    </li>
+                    <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📞</span>
+                    <a href="tel:+34627934010" class = "hover:text-botonEnlace transitions-colors">
+                        +34 627 93 40 10
+                    </a>    
+                    </li>
                 </ul>
                 <div class="flex items-center justify-center sm:justify-start gap-3 text-xs text-stone-400 font-medium">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">GitHub</a>
+                    <a href="https://github.com/SalvadorCalero" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">GitHub</a>
                     <span>•</span>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/salvador-calero-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">LinkedIn</a>
                     </div>
             </div>
 
@@ -193,10 +201,10 @@
         <div class="border-t border-stone-100 bg-stone-50/50">
             <div class="max-w-5xl mx-auto px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 text-center sm:text-left">
                 <div>
-                    &copy; {{ date('Y') }} M.T. Dev. Todos los derechos reservados.
+                    &copy; {{ date('Y') }} CaleroEstudio Todos los derechos reservados.
                 </div>
                 <div class="font-medium text-stone-500">
-                    Diseñado y Programado por <span class="text-textoPrincipal font-semibold">Salvador</span>
+                    Diseñado y Programado por <span class="text-textoPrincipal font-semibold">Salvador Calero</span>
                 </div>
             </div>
         </div>

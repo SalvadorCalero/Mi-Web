@@ -27,6 +27,13 @@ class ContactController extends Controller
             'name'    => 'required|string|max:255',
             'email'   => 'required|email|max:255',
             'message' => 'required|string|min:10',
+            'phone'   => [
+                'nullable', 
+                'regex:/^(\+34|0034|34)?[6789]\d{8}$/'
+            ],[
+            // Mensajes de error personalizados
+            'phone.regex' => 'El formato del número de teléfono no es válido. Debe ser un número nacional de 9 dígitos (ej. 600000000) o incluir prefijo (ej. +34600000000).',
+        ]
         ]);
 
         // 2. Ejecutamos el envío a través del canal SMTP (Mailpit en local)
