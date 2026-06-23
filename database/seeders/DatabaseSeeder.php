@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'title' => 'Acero Gourmet',
-                'description' => 'Desarrollo y optimización de una plataforma web enfocada en la promoción de contenidos gastronómicos, mejorando la visibilidad online y facilitando el acceso a información de interés para los usuarios.',
+                'description' => 'Desarrollo y optimización de una plataforma web enfocada en la promoción de cuchillería, mejorando la visibilidad online y facilitando el acceso a información de interés para los usuarios.',
                 'categoria' => 'otros',
                 'image_path' => 'img/proyectos/Acerogourmet/HeroAcerogourmet.webp',
                 'page_image_path' => 'img/proyectos/Acerogourmet/PageAcerogourmet.webp',
