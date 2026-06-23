@@ -49,7 +49,7 @@
 
                 <div class="hidden sm:block flex-shrink-0">
                     <a href="{{ route('contact.index') }}" class="inline-block bg-botonEnlace hover:bg-orange-800 text-white font-medium text-xs uppercase tracking-wider px-4 py-2 rounded-md transition-colors shadow-sm">
-                        Presupuesto
+                        Contactar
                     </a>
                 </div>
 
@@ -102,7 +102,7 @@
                     
                     <div class="sm:hidden pt-2 border-t border-stone-100">
                         <a href="{{ route('contact.index') }}" class="w-full text-center block bg-botonEnlace hover:bg-orange-800 text-white font-medium text-xs uppercase tracking-wider py-2.5 rounded-lg transition-colors shadow-sm">
-                            Presupuesto
+                            Contactar
                         </a>
                     </div>
                 </nav>
