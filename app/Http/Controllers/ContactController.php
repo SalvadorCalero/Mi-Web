@@ -38,7 +38,7 @@ class ContactController extends Controller
 
         // 2. Ejecutamos el envío a través del canal SMTP (Mailpit en local)
         // Sustituye 'tu-email@profesional.com' por la cuenta donde quieras recibir tus leads en producción
-        Mail::to('info@tualbornoz.com')->send(new ContactMessageReceived($validatedData));
+        Mail::to('info@caleroestudio.com')->send(new ContactMessageReceived($validatedData));
 
         // 3. Redireccionamos de vuelta enviando la sesión flash de éxito
         return back()->with('success', '¡Mensaje enviado con éxito! Me pondré en contacto contigo lo antes posible.');

@@ -179,8 +179,8 @@
                 <h3 class="font-titulos font-semibold text-textoPrincipal text-xs uppercase tracking-wider mb-4">Contacto</h3>
                 <ul class="space-y-2 text-stone-500 mb-4 w-full">
                     <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📧</span>
-                    <a href="mailto:salkalero@gmail.com" class = "hover:text-botonEnlace transitions-colors">
-                        salkalero@gmail.com
+                    <a href="mailto:info@caleroestudio.com" class = "hover:text-botonEnlace transitions-colors">
+                        info@caleroestudio.com
                     </a>
                     </li>
                     <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📞</span>

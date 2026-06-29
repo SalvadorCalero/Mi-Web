@@ -37,8 +37,8 @@
                             <span class="text-xl mt-0.5">📧</span>
                             <div>
                                 <p class="font-semibold text-textoPrincipal">Correo Electrónico</p>
-                                <a href="mailto:salkalero@gmail.com" class="text-textoCuerpo hover:text-botonEnlace transition-colors break-all">
-                                    salkalero@gmail.com
+                                <a href="mailto:info@caleroestudio.com" class="text-textoCuerpo hover:text-botonEnlace transition-colors break-all">
+                                    info@caleroestudio.com
                                 </a>
                             </div>
                         </div>
