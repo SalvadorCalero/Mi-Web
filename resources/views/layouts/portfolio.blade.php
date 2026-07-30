@@ -9,7 +9,7 @@
                 modalOpen: false, 
                 modalImage: '', 
                 modalTitle: '',
-                activeTab: 'formacion' {{-- Controla la pestaña activa por defecto --}}
+                activeTab: 'otros' {{-- Controla la pestaña activa por defecto --}}
              }">
              
         <div class="max-w-3xl mb-8">

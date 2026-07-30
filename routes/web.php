@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// Importamos de forma explícita nuestro controlador recién creado
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
@@ -18,7 +17,7 @@ use App\Http\Controllers\LegalController;
  */
 
 // Definimos la ruta de la raíz de la web ('/')
-// Al usar un controlador invokable, solo necesitamos pasar la clase en un string o referencia
+// Al usar un controlador invocable, solo necesitamos pasar la clase en un string o referencia
 Route::get('/', HomeController::class)->name('home');
 
 // Rutas de Contenido de la Aplicación (Gestionadas por PageController)
