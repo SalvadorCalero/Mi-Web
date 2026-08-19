@@ -114,7 +114,7 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://acerogourmet.es',
             ],
             [
-                'title' => 'Ana Méndez',
+                'title' => 'Elena Vázquez',
                 'description' => 'Espacio web creado para presentar trabajos y proyectos de forma visual, reforzando la identidad personal y facilitando el acceso a los contenidos.',
                 'categoria' => 'otros',
                 'image_path' => 'img/proyectos/galeria/HeroGaleria.webp',
