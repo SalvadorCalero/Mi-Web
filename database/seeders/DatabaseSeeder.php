@@ -125,7 +125,8 @@ class DatabaseSeeder extends Seeder
 
         // 3. Inserción directa en base de datos
         foreach ($proyectos as $proyecto) {
-            DB::table('projects')->insert([
+            // Insertamos el proyecto y recuperamos su ID automáticamente
+            $projectId = DB::table('projects')->insertGetId([
                 'title'           => $proyecto['title'],
                 'description'     => $proyecto['description'],
                 'categoria'       => $proyecto['categoria'],
@@ -135,6 +136,32 @@ class DatabaseSeeder extends Seeder
                 'created_at'      => now(),
                 'updated_at'      => now(),
             ]);
+
+            // Insertamos la imagen principal como primera foto del carrusel
+            DB::table('project_images')->insert([
+                'project_id' => $projectId,
+                'image_path' => $proyecto['page_image_path'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Ejemplo: Si quieres meter más fotos secundarias a un proyecto específico (ej. Agropai)
+            if ($proyecto['title'] === 'Agropai') {
+                DB::table('project_images')->insert([
+                    [
+                        'project_id' => $projectId,
+                        'image_path' => 'img/proyectos/Agropai/pageAgropai2.webp',
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ],
+                    [
+                        'project_id' => $projectId,
+                        'image_path' => 'img/proyectos/Agropai/pageAgropai3.webp',
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]
+                ]);
+            }
         }
     }
 }

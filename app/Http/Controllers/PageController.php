@@ -14,8 +14,8 @@ class PageController extends Controller
      */
     public function portfolio()
     {
-        // 1. Recuperamos absolutamente todos los proyectos de la tabla utilizando Eloquent ORM
-        $allProjects = Project::all();
+        // 1. Recuperamos los proyectos forzando la carga limpia y actualizada de su relación 'images'
+        $allProjects = Project::with('images')->get();
 
         // 2. Clasificamos los proyectos filtrando en memoria por la columna 'categoria'
         // El método where() de las colecciones de Laravel es idóneo y muy rápido para esto

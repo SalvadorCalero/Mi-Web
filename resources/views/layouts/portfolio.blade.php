@@ -7,7 +7,8 @@
     <section class="py-8 px-2" 
              x-data="{ 
                 modalOpen: false, 
-                modalImage: '', 
+                modalImages: [], {{-- Guardará el array de fotos del proyecto --}}
+                currentImageIndex: 0, {{-- Controlará que foto se muestra --}}
                 modalTitle: '',
                 activeTab: 'otros' {{-- Controla la pestaña activa por defecto --}}
              }">
@@ -53,12 +54,21 @@
             </nav>
         </div>
 
+        {{-- TAB: CLIENTES (FORMACIÓN) --}}
         <div x-show="activeTab === 'formacion'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @forelse($formacionProjects as $project)
                 <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                     
                     <div class="aspect-video bg-stone-100 relative cursor-pointer overflow-hidden group"
-                         @click="modalOpen = true; modalImage = '{{ asset($project->page_image_path) }}'; modalTitle = '{{ $project->title }}'">
+                         data-title="{{ $project->title }}"
+                         data-images="{{ $project->images->map(fn($img) => asset($img->image_path))->toJson() }}"
+                         @click="
+                            modalImages = [];
+                            modalOpen = true; 
+                            modalTitle = $el.getAttribute('data-title'); 
+                            currentImageIndex = 0;
+                            modalImages = JSON.parse($el.getAttribute('data-images'));
+                         ">
                         
                         @if($project->image_path)
                             <img src="{{ asset($project->image_path) }}" 
@@ -103,6 +113,7 @@
             @endforelse
         </div>
 
+        {{-- TAB: PROYECTOS PERSONALES --}}
         <div x-show="activeTab === 'personales'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-cloak>
             @forelse($personalesProjects as $project)
                 <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
@@ -118,12 +129,21 @@
             @endforelse
         </div>
 
+        {{-- TAB: MÁS PROYECTOS (OTROS) --}}
         <div x-show="activeTab === 'otros'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-cloak>
             @forelse($otrosProjects as $project)
                 <article class="bg-white border border-stone-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
                     
                     <div class="aspect-video bg-stone-100 relative cursor-pointer overflow-hidden group"
-                         @click="modalOpen = true; modalImage = '{{ asset($project->page_image_path) }}'; modalTitle = '{{ $project->title }}'">
+                         data-title="{{ $project->title }}"
+                         data-images="{{ $project->images->map(fn($img) => asset($img->image_path))->toJson() }}"
+                         @click="
+                            modalImages = [];
+                            modalOpen = true; 
+                            modalTitle = $el.getAttribute('data-title'); 
+                            currentImageIndex = 0;
+                            modalImages = JSON.parse($el.getAttribute('data-images'));
+                         ">
                         
                         @if($project->image_path)
                             <img src="{{ asset($project->image_path) }}" 
@@ -168,6 +188,7 @@
             @endforelse
         </div>
 
+        <!-- Modal con Visor / Carrusel -->
         <div x-show="modalOpen" 
              class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-md"
              x-transition:enter="transition ease-out duration-300"
@@ -177,6 +198,8 @@
              x-transition:leave-start="opacity-100"
              x-transition:leave-end="opacity-0"
              @keydown.escape.window="modalOpen = false"
+             @keydown.arrow-left.window="if(modalImages.length > 1 && currentImageIndex > 0) currentImageIndex--"
+             @keydown.arrow-right.window="if(modalImages.length > 1 && currentImageIndex < modalImages.length - 1) currentImageIndex++"
              x-cloak>
             
             <div class="bg-stone-900 border border-stone-800 rounded-2xl max-w-5xl w-full h-[85vh] flex flex-col overflow-hidden shadow-2xl"
@@ -184,7 +207,7 @@
                 
                 <div class="px-6 py-4 border-b border-stone-800 bg-stone-900/50 flex items-center justify-between">
                     <h3 class="font-titulos font-bold text-white text-lg flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-botonEnlace animate-pulse"></span>
+                        <span class="w-2 h-2 rounded-full bg-stone-400 animate-pulse"></span>
                         Análisis de Interfaz: <span x-text="modalTitle" class="text-stone-300 font-normal"></span>
                     </h3>
                     <button @click="modalOpen = false" class="text-stone-400 hover:text-white font-bold text-sm bg-stone-800 hover:bg-stone-700 px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
@@ -192,8 +215,41 @@
                     </button>
                 </div>
 
-                <div class="flex-1 overflow-y-auto bg-stone-950 p-4 current-scrollbar">
-                    <img :src="modalImage" :alt="modalTitle" class="w-full h-auto rounded-lg shadow-sm">
+                <!-- Contenedor del visor con controles -->
+                <div class="flex-1 relative overflow-hidden bg-stone-950 flex items-center justify-center p-4">
+                    
+                    <!-- Botón Anterior -->
+                    <button @click="currentImageIndex--" 
+                            x-show="modalImages.length > 1 && currentImageIndex > 0"
+                            class="absolute left-4 z-10 bg-stone-900/80 text-white p-3 rounded-full hover:bg-stone-800 transition-colors border border-stone-700 cursor-pointer">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <!-- Imagen actual -->
+                    <div class="w-full h-full flex items-center justify-center overflow-auto current-scrollbar">
+                        <template x-if="modalImages.length > 0">
+                            <!-- Se quita la directiva conflictiva de Blade y se usa un listener de JS válido -->
+                            <img :src="modalImages[currentImageIndex]" 
+                                 :alt="modalTitle" 
+                                 x-on:error="$event.target.src = 'https://placehold.co/600x400/292524/a8a29e?text=Imagen+no+encontrada'"
+                                 class="max-w-full max-h-full object-contain rounded-lg shadow-sm select-none">
+                        </template>
+                        <template x-if="modalImages.length === 0">
+                            <div class="text-stone-400 text-sm flex items-center justify-center h-full">No hay capturas disponibles para este proyecto.</div>
+                        </template>
+                    </div>
+
+                    <!-- Botón Siguiente -->
+                    <button @click="currentImageIndex++" 
+                            x-show="modalImages.length > 1 && currentImageIndex < modalImages.length - 1"
+                            class="absolute right-4 z-10 bg-stone-900/80 text-white p-3 rounded-full hover:bg-stone-800 transition-colors border border-stone-700 cursor-pointer">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicador de Páginas/Fotos -->
+                    <div x-show="modalImages.length > 1" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-stone-900/90 text-stone-300 text-xs font-medium px-3 py-1.5 rounded-full border border-stone-700 backdrop-blur-xs select-none">
+                        <span x-text="currentImageIndex + 1"></span> / <span x-text="modalImages.length"></span>
+                    </div>
                 </div>
             </div>
         </div>
