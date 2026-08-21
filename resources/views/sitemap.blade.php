@@ -15,4 +15,12 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+    <!-- Sección/Página Contacto -->
+    <url>
+        <loc>https://caleroestudio.com/contacto</loc>
+        <lastmod>{{ now()->tz('UTC')->toAtomString() }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
