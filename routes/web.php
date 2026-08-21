@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::controller(LegalController::class)->group(function () {
     Route::get('/politica-cookies', 'cookies')->name('legal.cookies');
     Route::get('/declaracion-accesibilidad', 'accesibilidad')->name('legal.declaracion-accesibilidad');
 });
+
+// Ruta para el Sitemap
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="es" class="h-full bg-fondoGeneral">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Desarrollador Freelance')</title>
-    
+    <!-- Título y Descripción Enfocados a Tu Nicho -->
+    <title>@yield('title', 'Calero Estudio | Desarrollo Web Freelancer y Soluciones Digitales')</title>
+    <meta name="description" content="@yield('meta_description', 'Desarrollador web freelancer especializado en aplicaciones a medida, Laravel, e-commerce y optimización SEO para empresas y profesionales.')">
+    <meta name="keywords" content="desarrollador web, laravel, php, freelancer, desarrollo web malaga, crear pagina web, seo">
+    <meta name="author" content="Salvador Calero">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / LinkedIn (Para que al compartir se vea una tarjeta visual) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'Calero Estudio | Desarrollo Web Freelancer')">
+    <meta property="og:description" content="@yield('meta_description', 'Desarrollo de aplicaciones web y sitios profesionales a medida.')">
+    <meta property="og:image" content="{{ asset('img/logo/og-image.jpg') }}">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Calero Estudio')">
+    <meta name="twitter:description" content="@yield('meta_description', 'Desarrollo de aplicaciones web a medida.')">
+    <meta name="twitter:image" content="{{ asset('img/logo/og-image.jpg') }}">
+
     <!-- 1. Carga de Fuentes desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,39 +31,68 @@
 
     <link rel="icon" type="image/png" href="{{ asset('img/logo/iconLogo.png') }}">
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Calero Estudio",
+            "image": "{{ asset('img/logo/logo.png') }}",
+            "@id": "https://caleroestudio.com/#organization",
+            "url": "https://caleroestudio.com",
+            "priceRange": "$$",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "Málaga",
+                "addressCountry": "ES"
+            },
+            "knowsAbout": [
+                "Web Development",
+                "Laravel",
+                "PHP",
+                "SEO",
+                "Tailwind CSS"
+            ],
+            "founder": {
+                "@type": "Person",
+                "name": "Salvador Calero"
+            }
+        }
+    </script>
+
 
     <!-- 3. COMPILADOR VITE/TAILWIND -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="flex flex-col min-h-full font-fuentePrincipal bg-fondoGeneral text-textoCuerpo antialiased">
 
     <!-- ==========================================
          HEADER FLOTANTE FIJO (Ancho simétrico al 70% / max-w-5xl)
          ========================================== -->
-<header class="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 sm:px-6" x-data="{ mobileMenuOpen: false }">
+    <header class="sticky top-4 z-50 w-full max-w-5xl mx-auto px-4 sm:px-6" x-data="{ mobileMenuOpen: false }">
         <div class="bg-white/90 backdrop-blur-md border border-stone-200/60 rounded-xl shadow-sm p-4">
             <div class="flex items-center justify-between">
                 <a href="{{ url('/') }}" class="flex-shrink-0 w-32 h-8 flex items-center justify-center">
                     <div class="flex-shrink-0 w-32 h-8 flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
-                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain"> 
+                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain">
                     </div>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-                    <a href="{{ route('home') }}" 
-                       class="{{ request()->routeIs('home') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
+                    <a href="{{ route('home') }}"
+                        class="{{ request()->routeIs('home') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
                         Inicio
                     </a>
-                    <a href="{{ route('portfolio') }}" 
-                       class="{{ request()->routeIs('portfolio') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
+                    <a href="{{ route('portfolio') }}"
+                        class="{{ request()->routeIs('portfolio') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
                         Proyectos
                     </a>
-                    <a href="{{ route('about') }}" 
-                       class="{{ request()->routeIs('about') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
+                    <a href="{{ route('about') }}"
+                        class="{{ request()->routeIs('about') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
                         Sobre Mí
                     </a>
-                    <a href="{{ route('contact.index') }}" 
-                       class="{{ request()->routeIs('contact.index') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
+                    <a href="{{ route('contact.index') }}"
+                        class="{{ request()->routeIs('contact.index') ? 'text-botonEnlace font-semibold' : 'text-textoCuerpo hover:text-botonEnlace' }} transition-colors">
                         Contacto
                     </a>
                 </nav>
@@ -56,15 +104,15 @@
                 </div>
 
                 <div class="flex items-center md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" 
-                            type="button" 
-                            class="p-1.5 rounded-lg text-textoCuerpo hover:text-textoPrincipal hover:bg-stone-100 transition-colors focus:outline-none cursor-pointer"
-                            aria-label="Abrir navegación móvil">
-                        
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                        type="button"
+                        class="p-1.5 rounded-lg text-textoCuerpo hover:text-textoPrincipal hover:bg-stone-100 transition-colors focus:outline-none cursor-pointer"
+                        aria-label="Abrir navegación móvil">
+
                         <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-                        
+
                         <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-cloak>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -73,35 +121,35 @@
 
             </div>
 
-            <div x-show="mobileMenuOpen" 
-                 x-transition:enter="transition ease-out duration-200"
-                 x-transition:enter-start="opacity-0 -translate-y-2"
-                 x-transition:enter-end="opacity-100 translate-y-0"
-                 x-transition:leave="transition ease-in duration-150"
-                 x-transition:leave-start="opacity-100 translate-y-0"
-                 x-transition:leave-end="opacity-0 -translate-y-2"
-                 class="md:hidden mt-4 pt-4 border-t border-stone-100"
-                 @click.away="mobileMenuOpen = false"
-                 x-cloak>
-                
+            <div x-show="mobileMenuOpen"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
+                class="md:hidden mt-4 pt-4 border-t border-stone-100"
+                @click.away="mobileMenuOpen = false"
+                x-cloak>
+
                 <nav class="flex flex-col gap-3 text-base font-medium font-fuentePrincipal">
-                    <a href="{{ route('home') }}" 
-                       class="px-3 py-2 rounded-lg {{ request()->routeIs('home') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
+                    <a href="{{ route('home') }}"
+                        class="px-3 py-2 rounded-lg {{ request()->routeIs('home') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
                         Inicio
                     </a>
-                    <a href="{{ route('portfolio') }}" 
-                       class="px-3 py-2 rounded-lg {{ request()->routeIs('portfolio') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
+                    <a href="{{ route('portfolio') }}"
+                        class="px-3 py-2 rounded-lg {{ request()->routeIs('portfolio') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
                         Proyectos
                     </a>
-                    <a href="{{ route('about') }}" 
-                       class="px-3 py-2 rounded-lg {{ request()->routeIs('about') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
+                    <a href="{{ route('about') }}"
+                        class="px-3 py-2 rounded-lg {{ request()->routeIs('about') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
                         Sobre Mí
                     </a>
-                    <a href="{{ route('contact.index') }}" 
-                       class="px-3 py-2 rounded-lg {{ request()->routeIs('contact.index') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
+                    <a href="{{ route('contact.index') }}"
+                        class="px-3 py-2 rounded-lg {{ request()->routeIs('contact.index') ? 'bg-stone-50 text-botonEnlace font-semibold' : 'text-textoCuerpo hover:bg-stone-50 hover:text-botonEnlace' }} transition-all">
                         Contacto
                     </a>
-                    
+
                     <div class="sm:hidden pt-2 border-t border-stone-100">
                         <a href="{{ route('contact.index') }}" class="w-full text-center block bg-botonEnlace hover:bg-orange-800 text-white font-medium text-xs uppercase tracking-wider py-2.5 rounded-lg transition-colors shadow-sm">
                             Contactar
@@ -123,13 +171,13 @@
          FOOTER SIMÉTRICO (Ancho alineado al 70% / max-w-5xl)
          ========================================== -->
     <footer class="w-full bg-fondoGeneral border-t border-stone-200 mt-16 font-fuentePrincipal text-sm">
-        
+
         <div class="max-w-5xl mx-auto px-6 sm:px-8 md:px-12 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center sm:text-left">
-            
+
             <div class="flex flex-col items-center sm:items-start space-y-4">
                 <a href="{{ url('/') }}" class="flex-shrink-0 w-32 h-8 flex items-center justify-center">
                     <div class="flex-shrink-0 w-32 h-8 flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
-                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain"> 
+                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain">
                     </div>
                 </a>
                 <p class="text-xs text-stone-400 leading-relaxed max-w-xs">
@@ -141,26 +189,26 @@
                 <h3 class="font-titulos font-semibold text-textoPrincipal text-xs uppercase tracking-wider mb-4">Explorar</h3>
                 <ul class="space-y-2 text-sm">
                     <li>
-                        <a href="{{ route('home') }}" 
-                           class="{{ request()->routeIs('home') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
+                        <a href="{{ route('home') }}"
+                            class="{{ request()->routeIs('home') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
                             Inicio
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('portfolio') }}" 
-                           class="{{ request()->routeIs('portfolio') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
+                        <a href="{{ route('portfolio') }}"
+                            class="{{ request()->routeIs('portfolio') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
                             Portfolio
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('about') }}" 
-                           class="{{ request()->routeIs('about') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
+                        <a href="{{ route('about') }}"
+                            class="{{ request()->routeIs('about') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
                             Sobre Mí
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('contact.index') }}" 
-                           class="{{ request()->routeIs('contact.index') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
+                        <a href="{{ route('contact.index') }}"
+                            class="{{ request()->routeIs('contact.index') ? 'text-botonEnlace font-medium' : 'text-textoCuerpo' }} hover:text-botonEnlace transition-colors">
                             Contacto
                         </a>
                     </li>
@@ -181,21 +229,21 @@
                 <h3 class="font-titulos font-semibold text-textoPrincipal text-xs uppercase tracking-wider mb-4">Contacto</h3>
                 <ul class="space-y-2 text-stone-500 mb-4 w-full">
                     <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📧</span>
-                    <a href="mailto:info@caleroestudio.com" class = "hover:text-botonEnlace transitions-colors">
-                        info@caleroestudio.com
-                    </a>
+                        <a href="mailto:info@caleroestudio.com" class="hover:text-botonEnlace transitions-colors">
+                            info@caleroestudio.com
+                        </a>
                     </li>
                     <li class="flex items-center justify-center sm:justify-start gap-1.5 text-xs"><span>📞</span>
-                    <a href="tel:+34627934010" class = "hover:text-botonEnlace transitions-colors">
-                        +34 627 93 40 10
-                    </a>    
+                        <a href="tel:+34627934010" class="hover:text-botonEnlace transitions-colors">
+                            +34 627 93 40 10
+                        </a>
                     </li>
                 </ul>
                 <div class="flex items-center justify-center sm:justify-start gap-3 text-xs text-stone-400 font-medium">
                     <a href="https://github.com/SalvadorCalero" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">GitHub</a>
                     <span>•</span>
                     <a href="https://www.linkedin.com/in/salvador-calero-dev/" target="_blank" rel="noopener noreferrer" class="hover:text-botonEnlace transition-colors">LinkedIn</a>
-                    </div>
+                </div>
             </div>
 
         </div>
@@ -212,14 +260,14 @@
         </div>
 
     </footer>
-    
-<!-- ==========================================
+
+    <!-- ==========================================
          BLOQUE GLOBAL: COOKIES & BOTÓN FLOTANTE
          ========================================== -->
     <div x-data="cookieBanner">
-        
+
         <!-- Banner de Cookies -->
-        <div 
+        <div
             x-show="mostrarBanner"
             x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="opacity-0 translate-y-4"
@@ -228,29 +276,26 @@
             x-transition:leave-start="opacity-100 translate-y-0"
             x-transition:leave-end="opacity-0 translate-y-4"
             class="fixed bottom-4 left-4 right-4 sm:left-auto max-w-md w-[calc(100%-2rem)] sm:w-full bg-white border border-stone-200 rounded-xl shadow-xl p-6 z-50"
-            x-cloak
-        >
+            x-cloak>
             <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-3">
                     <span class="text-xl">🍪</span>
                     <h3 class="text-sm font-titulos font-semibold tracking-wider uppercase text-stone-800">Aviso de Cookies</h3>
                 </div>
-                
+
                 <p class="text-xs text-stone-600 leading-relaxed">
                     Utilizamos cookies propias y de terceros para analizar nuestros servicios y mostrarte publicidad relacionada con tus preferencias. Puedes aceptarlas o rechazarlas.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-2 mt-2">
-                    <button 
-                        @click="acceptCookies()" 
-                        class="flex-1 bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer"
-                    >
+                    <button
+                        @click="acceptCookies()"
+                        class="flex-1 bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer">
                         Aceptar todas
                     </button>
-                    <button 
-                        @click="rejectCookies()" 
-                        class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer"
-                    >
+                    <button
+                        @click="rejectCookies()"
+                        class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold py-2 px-4 rounded transition-colors cursor-pointer">
                         Rechazar todas
                     </button>
                 </div>
@@ -258,7 +303,7 @@
         </div>
 
         <!-- Botón Flotante para Reabrir el Configurar -->
-        <button 
+        <button
             x-show="!mostrarBanner"
             @click="mostrarBanner = true"
             x-transition:enter="transition ease-out duration-300"
@@ -270,12 +315,12 @@
             class="fixed bottom-4 right-4 md:right-6 z-40 bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 cursor-pointer flex items-center justify-center text-xl select-none group"
             aria-label="Configuración de cookies"
             title="Configuración de cookies"
-            x-cloak
-        >
+            x-cloak>
             <span class="group-hover:rotate-12 transition-transform duration-200">🍪</span>
         </button>
 
     </div>
 
 </body>
+
 </html>
