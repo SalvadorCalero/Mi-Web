@@ -28,8 +28,8 @@
     <!-- 1. Carga de Fuentes desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="icon" type="image/png" href="{{ asset('img/logo/iconLogo.png') }}">
 
     <!-- Esquema JSON-LD Datos Estructurados -->
@@ -78,7 +78,7 @@
             <div class="flex items-center justify-between">
                 <a href="{{ url('/') }}" class="flex-shrink-0 w-32 h-8 flex items-center justify-center">
                     <div class="flex-shrink-0 w-32 h-8 flex items-center justify-center text-xs font-titulos tracking-wider text-stone-400 uppercase">
-                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" class="w-full h-auto object-contain">
+                        <img src="{{ asset('img/logo/logo4.webp') }}" alt="Logo Calero Estudio" width="128" height="32" class="w-full h-auto object-contain">
                     </div>
                 </a>
 
