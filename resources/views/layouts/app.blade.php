@@ -2,6 +2,7 @@
 <html lang="es" class="h-full bg-fondoGeneral">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título y Descripción Enfocados a Tu Nicho -->
@@ -11,7 +12,7 @@
     <meta name="author" content="Salvador Calero">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook / LinkedIn (Para que al compartir se vea una tarjeta visual) -->
+    <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', 'Calero Estudio | Desarrollo Web Freelancer')">
@@ -31,12 +32,14 @@
 
     <link rel="icon" type="image/png" href="{{ asset('img/logo/iconLogo.png') }}">
 
+    <!-- Esquema JSON-LD Datos Estructurados -->
+    @verbatim
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "name": "Calero Estudio",
-            "image": "{{ asset('img/logo/logo.png') }}",
+            "image": "https://caleroestudio.com/img/logo/logo.png",
             "@id": "https://caleroestudio.com/#organization",
             "url": "https://caleroestudio.com",
             "priceRange": "$$",
@@ -58,10 +61,11 @@
             }
         }
     </script>
-
+    @endverbatim
 
     <!-- 3. COMPILADOR VITE/TAILWIND -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body class="flex flex-col min-h-full font-fuentePrincipal bg-fondoGeneral text-textoCuerpo antialiased">
